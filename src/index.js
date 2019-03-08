@@ -5,7 +5,9 @@ const defaultOptions = {
   enableLinkTracking: true,
   requireConsent: false,
   trackInitialView: true,
-  trackerFileName: 'piwik'
+  trackerFileName: 'piwik',
+  includeLocationPathname: false,
+  includeLocationSearch: false
 }
 
 export default function install (Vue, setupOptions = {}) {
@@ -39,7 +41,7 @@ export default function install (Vue, setupOptions = {}) {
 
       // Unfortunately the window location is not yet updated here
       // We need to make our own url using the data provided by the router
-      const loc = window.location
+      const loc = window.location;
 
       // Protocol may or may not contain a colon
       let protocol = loc.protocol
@@ -48,14 +50,16 @@ export default function install (Vue, setupOptions = {}) {
       }
 
       const maybeHash = options.router.mode === 'hash' ? '/#' : ''
-      const url = protocol + '//' + loc.host + maybeHash + to.path
+      const locationSearch = ( options.includeLocationSearch && loc.search ) ? loc.search : '';
+      const locationPathname = ( options.includeLocationPathname ) ? loc.pathname : '/';
+      const url = protocol + '//' + loc.host + locationPathname + locationSearch + maybeHash + to.path
 
       if (to.meta.analyticsIgnore) {
-        options.debug && console.debug('[vue-matomo] Ignoring ' + url)
+        options.debug && console.debug('%c[vue-matomo]', 'color:#b22;background:#e5e5e5;padding:.1em .5em;', ' Ignoring ' + url)
         return
       }
 
-      options.debug && console.debug('[vue-matomo] Tracking ' + url)
+      options.debug && console.debug('%c[vue-matomo]', 'color:#b22;background:#e5e5e5;padding:.1em .5em;', ' Tracking ' + url)
 
       Matomo.setCustomUrl(url)
       Matomo.trackPageView()
