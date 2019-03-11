@@ -14,7 +14,7 @@ const webpackConfig = merge.smart({}, base, {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    /*new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true,
         warnings: false,
@@ -27,7 +27,7 @@ const webpackConfig = merge.smart({}, base, {
         screw_ie8: true,
       },
       sourceMap: true
-    }),
+    }),*/
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',

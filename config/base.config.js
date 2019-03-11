@@ -1,10 +1,28 @@
-const webpack = require('webpack')
+const webpack = require('webpack');
+const TerserPlugin = require( 'terser-webpack-plugin' );
 const pkg = require('../package.json')
 const path = require('path')
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: './src/index.js',
+
+  optimization:{
+    minimizer: [
+      new TerserPlugin({
+        sourceMap: true,
+        parallel: true,
+        cache: true,
+        terserOptions: {
+          ie8: false,
+          mangle: true,
+          output: {
+            comments: false,
+          },
+        }
+      })
+    ]
+  },
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: `${pkg.name}.js`,

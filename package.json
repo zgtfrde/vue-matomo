@@ -26,11 +26,12 @@
     "jest-cli": "^21.2.1",
     "ora": "^1.2.0",
     "semantic-release": "^7.0.1",
+    "terser-webpack-plugin": "^1.2.3",
     "vue": "^2.5.9",
     "vue-loader": "^13.5.0",
     "vue-router": "^2.7.0",
     "vue-template-compiler": "^2.5.9",
-    "webpack": "^3.4.1",
+    "webpack": "^4.29.6",
     "webpack-merge": "^4.1.0"
   },
   "engines": {
@@ -41,5 +42,6 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "dependencies": {}
 }
