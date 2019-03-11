@@ -8,6 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin')
 const spinner = ora()
 
 const webpackConfig = merge.smart({}, base, {
+  mode: 'production',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

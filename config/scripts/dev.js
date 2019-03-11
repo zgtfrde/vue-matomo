@@ -5,6 +5,7 @@ const FriendyError = require('friendly-errors-webpack-plugin')
 const pkg = require('../../package.json')
 
 const webpackConfig = merge.smart({}, base, {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   plugins: [
     new webpack.DefinePlugin({
