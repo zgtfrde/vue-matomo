@@ -5,9 +5,6 @@
   "author": "Dennis Ruhe <dennis@amazingsystems.nl>",
   "license": "MIT",
   "main": "dist/vue-matomo.js",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "build": "node config/scripts/build.js"
