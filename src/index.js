@@ -8,19 +8,19 @@ const defaultOptions = {
   trackerFileName: 'piwik',
   includeLocationPathname: false,
   includeLocationSearch: false
-}
+};
 
 export default function install (Vue, setupOptions = {}) {
-  const options = Object.assign({}, defaultOptions, setupOptions)
+  const options = Object.assign({}, defaultOptions, setupOptions);
 
-  const { host, siteId, trackerFileName, trackerUrl } = options
+  const { host, siteId, trackerFileName, trackerUrl } = options;
   const trackerEndpoint = trackerUrl || `${host}/${trackerFileName}.php`;
 
-  const Matomo = MatomoJS.getTracker(trackerEndpoint, siteId)
+  const Matomo = MatomoJS.getTracker(trackerEndpoint, siteId);
 
   // Assign matomo to Vue
-  Vue.prototype.$piwik = Matomo
-  Vue.prototype.$matomo = Matomo
+  Vue.prototype.$piwik = Matomo;
+  Vue.prototype.$matomo = Matomo;
 
   if (options.requireConsent) {
     Matomo.requireConsent()
